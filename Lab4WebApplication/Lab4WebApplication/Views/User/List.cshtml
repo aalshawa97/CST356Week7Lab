@@ -1,0 +1,159 @@
+﻿@model IEnumerable<Lab4WebApplication.Models.View.UserViewModel>
+
+@{
+
+    ViewBag.Title = "List";
+
+}
+
+<h2 class="well">List</h2>
+
+    @if (Model.Count() > 2)
+    {
+<div class="alert alert-dismissable">
+    <a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
+    <strong>Info!</strong> Alert triggered by more than two entites being displayed.
+</div>
+    }
+
+<p>
+
+    @Html.ActionLink("Create", "Create", null, new {id = "Create", @class = "btn btn-lg" })
+
+</p>
+
+<table id="Table" class="table table-striped">
+
+    <tr>
+
+        <th>
+
+            @Html.DisplayNameFor(model => model.FirstName)
+
+        </th>
+
+        <th>
+
+            @Html.DisplayNameFor(model => model.MiddleName)
+
+        </th>
+
+        <th>
+
+            @Html.DisplayNameFor(model => model.LastName)
+
+        </th>
+
+        <th>
+
+            @Html.DisplayNameFor(model => model.FavoriteHobby)
+
+        </th>
+
+        <th>
+
+            @Html.DisplayNameFor(model => model.EmailAddress)
+
+        </th>
+
+        <th>
+
+            @Html.DisplayNameFor(model => model.DOB)
+
+        </th>
+
+        <th>
+
+            @Html.DisplayNameFor(model => model.YearsInSchool)
+
+        </th>
+
+        <th></th>
+
+    </tr>
+
+    @foreach (var item in Model)
+
+    {
+
+        <tr>
+
+            <td>
+
+                @Html.DisplayFor(modelItem => item.FirstName)
+
+            </td>
+
+            <td>
+
+                @Html.DisplayFor(modelItem => item.MiddleName)
+
+            </td>
+
+            <td>
+
+                @Html.DisplayFor(modelItem => item.LastName)
+
+            </td>
+
+            <td>
+
+                @Html.DisplayFor(modelItem => item.FavoriteHobby)
+
+            </td>
+
+            <td>
+
+                @Html.DisplayFor(modelItem => item.EmailAddress)
+
+            </td>
+
+            <td>
+
+                @Html.DisplayFor(modelItem => item.DOB)
+
+            </td>
+
+            <td>
+
+                @Html.DisplayFor(modelItem => item.YearsInSchool)
+
+            </td>
+
+            <td>
+
+                @Html.ActionLink("Edit","Edit", "Edit", new { id = item.Id }, new { @class = "btn-xs" }) |
+
+                @Html.ActionLink("Details", "Details", "Details", new { id = item.Id }, new { @class = "btn-xs" }) |
+
+                @Html.ActionLink("Delete", "Delete", "Delete", new { id = item.Id }, new { @class = "btn-xs" }) |
+
+                @Html.ActionLink("Pets", "List", "Pet", new { userId = item.Id }, new { @class = "btn-xs" })
+
+            </td>
+
+        </tr>
+
+    }
+
+</table>
+
+<button id="Show" type="button" class="btn btn-info">Show</button>
+
+<button id ="Hide" type="button" class="btn btn-info">Hide</button>
+
+@section scripts {
+<script>
+    $(document).ready(function () {
+        $("#Create").click(function () {
+            //alert("Create Has Been Clicked After The Document Has Been Loaded");
+        });
+        $("#Show").click(function () {
+            $("Table").show();
+        });
+        $("#Hide").click(function () {
+            $("Table").hide();
+        });
+    });
+</script>
+}
